@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
+import { CustomerComponent } from './customer/customer.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 
 // routes
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'customer', component: CustomerComponent },
   { path: '404', component: NotfoundComponent },
   { path: '**', redirectTo: '/404' }
 ];
@@ -24,6 +26,7 @@ const routes: Routes = [
   declarations: [
     HomeComponent,
     AdminComponent,
+    CustomerComponent,
     NotfoundComponent
   ]
 })
