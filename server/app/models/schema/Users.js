@@ -26,7 +26,8 @@ var Sch = new Schema({
     password: {type: String, required: 'Password is required'},
 
     role: {type: String, enum: ['admin', 'customer'], default: 'customer'},
-    is_active: {type: Boolean, default: true}
+    is_active: {type: Boolean, default: true},
+    jwt_token: String
 
 }, opts);
 
