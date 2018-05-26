@@ -72,7 +72,8 @@ module.exports.login = function (req, res, next) {
             var jwtToken = jwt.sign(jwt_payload, config.api_secret);
 
             //delete password
-            delete userDoc.password;
+            userDoc.password = '--removed--';
+            console.log(userDoc);
 
             //update jwt_token which will be used for node-cron & socket.io authentication
             return users_model.editOne({_id: userDoc._id}, {jwt_token: jwtToken})

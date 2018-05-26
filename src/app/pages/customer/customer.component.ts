@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalsService } from '../../ng/services/globals.service';
 
 @Component({
   selector: 'app-customer',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerComponent implements OnInit {
 
-  constructor() { }
+  loggedUser: any;
+
+  constructor(private globalsService: GlobalsService) {
+    this.loggedUser = globalsService.loggedUser;
+  }
 
   ngOnInit() {
   }
