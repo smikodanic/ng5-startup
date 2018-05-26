@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 import { environment } from '../../../environments/environment';
+
 import { CookieService } from 'ngx-cookie-service';
 import { GlobalsService } from '../../ng/services/globals.service';
 
@@ -10,10 +13,15 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 
+
 @Injectable()
 export class AuthService {
 
-  constructor(private http: HttpClient, private cookieService: CookieService, private globalsService: GlobalsService) { }
+  constructor(
+    private http: HttpClient,
+    private cookieService: CookieService,
+    private globalsService: GlobalsService,
+    private r: Router) { }
 
   /**
    * Login
@@ -39,6 +47,10 @@ export class AuthService {
 
         /* set loggedUser to global variables */
         this.globalsService.loggedUser = v.user;
+
+        /* redirect to URL */
+        const afterSuccessLoginUrl = `/${v.user.role}`;
+        this.r.navigateByUrl(afterSuccessLoginUrl);
       })
       .catch((err: Error) => {
         /* remove cookie*/
