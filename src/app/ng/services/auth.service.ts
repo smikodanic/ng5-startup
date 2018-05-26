@@ -74,4 +74,9 @@ export class AuthService {
   }
 
 
+  /**
+   * Get logged user info (from cookie)
+   */
+
+
 }

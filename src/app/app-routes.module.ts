@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // components
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { AdminComponent } from './admin/admin.component';
-import { CustomerComponent } from './customer/customer.component';
-import { NotfoundComponent } from './notfound/notfound.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { CustomerComponent } from './pages/customer/customer.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 // services
 import { IsLoggedService } from './ng/services/routeGuards/isLogged.service';

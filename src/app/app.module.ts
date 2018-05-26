@@ -8,7 +8,7 @@ import { AppRoutesModule } from './app-routes.module';
 
 // components
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './pages/login/login.component';
 
 // services
 import { AuthService } from './ng/services/auth.service';
