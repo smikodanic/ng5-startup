@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { AuthService } from '../../ng/services/auth.service';
+import { AuthService } from '../../ng/services/auth';
 
 
 @Component({
@@ -27,8 +27,9 @@ export class LoginComponent implements OnInit {
     const creds = this.loginFG.value; // {username: , password: }
 
     this.authService.login(creds)
-      .subscribe((v: any) => {
-        console.info('LOGGED USER:: ', v);
+      .subscribe((loggedUser: any) => {
+        const jwtToken = this.authService.getJWTtoken();
+        console.info('LOGGED USER:: ', loggedUser, ' jwtToken=', jwtToken);
       }, (err) => {
         this.err = err.error;
         setTimeout(() => {

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken } from '@angular/core';
 
 // modules
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,9 +11,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 
 // services
-import { AuthService } from './ng/services/auth.service';
-import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from './ng/services/auth';
+import { CookiesService } from 'ng5plus-cookies';
 import { GlobalsService } from './ng/services/globals.service';
+
+import { environment } from '../environments/environment';
+// export const API_BASE_URL = new InjectionToken<string>('');
 
 
 @NgModule({
@@ -29,7 +32,11 @@ import { GlobalsService } from './ng/services/globals.service';
   ],
   providers: [
     AuthService,
-    CookieService,
+    { provide: 'API_BASE_URL', useValue: environment.api_base_url },
+    { provide: 'AUTH_URLS', useValue: environment.auth_urls },
+    { provide: 'COOKIE_OPTS', useValue: environment.cookie_options },
+    CookiesService,
+
     GlobalsService
   ],
   bootstrap: [AppComponent]

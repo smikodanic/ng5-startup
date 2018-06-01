@@ -56,6 +56,7 @@ module.exports = function (modelCommon) {
 
     //update a doc
     var editOne = function (moQuery, docNew, updOpts) {
+        console.log(updOpts);
         return modelCommon.findOneAndUpdateAsync(moQuery, docNew, updOpts);
     };
 

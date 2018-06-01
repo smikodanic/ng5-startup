@@ -10,13 +10,12 @@ import { CustomerComponent } from './pages/customer/customer.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 // services
-import { IsLoggedService } from './ng/services/routeGuards/isLogged.service';
-import { HasRoleService } from './ng/services/routeGuards/hasRole.service';
+import { IsLoggedService, HasRoleService, AutologinService } from './ng/services/auth';
 
 // routes
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [AutologinService] },
   { path: 'admin', component: AdminComponent, canActivate: [IsLoggedService, HasRoleService] },
   { path: 'customer', component: CustomerComponent, canActivate: [IsLoggedService, HasRoleService] },
   { path: '404', component: NotfoundComponent },
@@ -26,7 +25,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
-  providers: [IsLoggedService, HasRoleService],
+  providers: [IsLoggedService, HasRoleService, AutologinService],
   exports: [ RouterModule ],
   declarations: [
     HomeComponent,

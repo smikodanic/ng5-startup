@@ -5,5 +5,19 @@
 
 export const environment = {
   production: false,
-  api_base_url: 'http://localhost:4444/api'
+  api_base_url: 'http://localhost:4444/api',
+  auth_urls: {
+    afterGoodLogin: '/{loggedUserRole}', // {loggedUserRole} -> 'admin' | 'customer'
+    afterBadLogin: '/login',
+    afterLogout: '/login'
+  },
+  cookie_options: {
+    // domain: 'localhost',
+    path: '/',
+    expires: 3,
+    // expires: new Date('2018-10-31T03:24:00'),
+    secure: false,
+    httpOnly: false,
+    sameSite: 'strict'
+  }
 };

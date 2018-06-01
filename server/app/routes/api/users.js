@@ -73,20 +73,15 @@ module.exports.login = function (req, res, next) {
 
             //delete password
             userDoc.password = '--removed--';
-            console.log(userDoc);
 
             //update jwt_token which will be used for node-cron & socket.io authentication
-            return users_model.editOne({_id: userDoc._id}, {jwt_token: jwtToken})
-                .then(function () {
+            return users_model.editOne({_id: userDoc._id}, {jwt_token: jwtToken}, {new: true})
+                .then(function (userUpd) {
                     var jdata = {
                         success: true,
                         message: 'Login was successful. JWT is generated and you can use it in API request header. Authorization: JWT ' + jwtToken,
-                        browser_storage: {
-                            username: userDoc.username,
-                            role: userDoc.role,
-                            authorization_header: 'JWT ' + jwtToken
-                        },
-                        user: userDoc
+                        jwtToken: 'JWT ' + jwtToken, // set cookie 'auth__jwtToken': protect each API request with JWT token
+                        loggedUser: userUpd // set cookie 'auth_loggedUser': logged user info
                     };
                     res.json(jdata);
                 });

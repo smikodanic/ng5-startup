@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalsService } from '../../ng/services/globals.service';
+import { AuthService } from '../../ng/services/auth';
 
 @Component({
   selector: 'app-customer',
@@ -10,11 +10,16 @@ export class CustomerComponent implements OnInit {
 
   loggedUser: any;
 
-  constructor(private globalsService: GlobalsService) {
-    this.loggedUser = globalsService.loggedUser;
+  constructor(private authService: AuthService) {
+    this.loggedUser = authService.getLoggedUserInfo();
   }
 
   ngOnInit() {
+  }
+
+  logout() {
+    console.log('LOGOUT:: ');
+    this.authService.logout();
   }
 
 }
