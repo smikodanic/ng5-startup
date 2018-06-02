@@ -1,6 +1,9 @@
 // modules
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common'; // common directives, pipes
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 // components
 import { HomeComponent } from './pages/home/home.component';
@@ -24,11 +27,17 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  providers: [IsLoggedService, HasRoleService, AutologinService],
+  imports: [
+    RouterModule.forRoot(routes, { enableTracing: false }),
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
   exports: [ RouterModule ],
+  providers: [ IsLoggedService, HasRoleService, AutologinService ],
   declarations: [
     HomeComponent,
+    LoginComponent,
     AdminComponent,
     CustomerComponent,
     NotfoundComponent

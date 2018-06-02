@@ -172,7 +172,11 @@
 
             <h1>Title</h1>
             <section>
-                Some text ...
+                Click on button "Test Admin Endpoint" to check if API Endpoint protection by HTTP interceptor is working.
+                <br>HTTP interceptor is integrated in <b>ng5plus-auth</b> npm package.
+                <br>
+                <br><button (click)="testAdminEndpoint()">Test Admin Endpoint</button>
+                <br>{{ apiResponse | json }}
             </section>
 
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { httpRoutes } from '../../http-routes';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  apiResponse: any = {};
+
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
+  }
+
+
+  testAdminEndpoint() {
+    this.httpClient.get(httpRoutes.admin.test)
+      .subscribe(
+        apiRes => {
+          console.log(apiRes);
+        },
+        err => {
+          this.apiResponse = err;
+          console.error(err);
+        }
+      );
+  }
+
+
+  testCustomerEndpoint() {
+    this.httpClient.get(httpRoutes.customer.test)
+      .subscribe(
+        apiRes => {
+          this.apiResponse = apiRes;
+          console.log(apiRes);
+        },
+        err => {
+          this.apiResponse = err;
+          console.error(err);
+        }
+      );
   }
 
 }

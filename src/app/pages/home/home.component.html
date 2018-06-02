@@ -35,8 +35,19 @@
     </div>
 </nav>
 
-<div class="app blank sidebar-opened">
+<div class="app blank sidebar-opened" style="background-color:#fcf;">
     <article class="content" style="text-align:center;margin:54px 0px;">
-        Some text...
+        User must be logged in order to angular routes and API endpoints work properly!
+        
+        <br><br>
+        <h3>Test Angular Routes <small>(user is not logged in)</small></h3>
+        <a routerLink="/admin">Test /admin route</a> - will be redirected to /login
+        <br> <a routerLink="/customer">Test /customer route</a> - will be redirected to /login
+
+        <br><br>
+        <h3>Test API Endpoints <small>(user is not logged in)</small></h3>
+        <button (click)="testAdminEndpoint()">Test Admin Endpoint</button>
+        <button (click)="testCustomerEndpoint()">Test Customer Endpoint</button>
+        <br><br>{{ apiResponse | json }}
     </article>
 </div>
