@@ -11,8 +11,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 
 // services
-import { AuthService } from './ng/services/auth';
 import { CookiesService } from 'ng5plus-cookies';
+import { AuthService } from 'ng5plus-auth';
 import { GlobalsService } from './ng/services/globals.service';
 
 import { environment } from '../environments/environment';
@@ -31,11 +31,11 @@ import { environment } from '../environments/environment';
     AppRoutesModule,
   ],
   providers: [
+    CookiesService,
     AuthService,
     { provide: 'API_BASE_URL', useValue: environment.api_base_url },
     { provide: 'AUTH_URLS', useValue: environment.auth_urls },
     { provide: 'COOKIE_OPTS', useValue: environment.cookie_options },
-    CookiesService,
 
     GlobalsService
   ],

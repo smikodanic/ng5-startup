@@ -10,7 +10,7 @@ import { CustomerComponent } from './pages/customer/customer.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 // services
-import { IsLoggedService, HasRoleService, AutologinService } from './ng/services/auth';
+import { IsLoggedService, HasRoleService, AutologinService } from 'ng5plus-auth';
 
 // routes
 const routes: Routes = [

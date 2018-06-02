@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "core-js": "^2.4.1",
+    "ng5plus-auth": "file:../../1mynpms/ng5plus-auth/ng5plus-auth-1.0.0.tgz",
     "ng5plus-cookies": "^1.0.5",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"

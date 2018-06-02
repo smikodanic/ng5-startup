@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../ng/services/auth';
+import { AuthService } from 'ng5plus-auth';
 
 @Component({
   selector: 'app-admin',

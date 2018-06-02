@@ -35,6 +35,10 @@ interface LoggedUser {
 }
 
 
+interface Credentials {
+  username: string;
+  password: string;
+}
 
 
 @Injectable()
@@ -60,7 +64,7 @@ export class AuthService {
    * @param creds // credentials object {username: xxx, password: xxx}
    * @return Observable
    */
-  login(creds) {
+  login(creds: Credentials): Observable<any> {
 
     return this.http.post(`${this.api_base_url}/users/login`, creds)
       .do((apiResp: any) => {
@@ -99,7 +103,7 @@ export class AuthService {
    * Logout
    * @return Observable
    */
-  logout() {
+  logout(): void {
     // delete all cookies
     this.cookiesService.removeAll(false);
 
@@ -121,7 +125,7 @@ export class AuthService {
    * Get logged user info (from global variables or cookie)
    * @return object - {first_name: , last_name: , ...}
    */
-  getLoggedUserInfo() {
+  getLoggedUserInfo(): any {
     const loggedUser: LoggedUser = this.loggedUser || this.cookiesService.getObject('auth_loggedUser', false);
     return loggedUser;
   }
@@ -133,7 +137,7 @@ export class AuthService {
    * Get JWT token from cookie
    * @return string - JWT eyJhbGciOiJIUzI1NiIsInR...
    */
-  getJWTtoken() {
+  getJWTtoken(): string {
     const jwtToken: string = this.cookiesService.get('auth_jwtToken', false);
     return jwtToken;
   }
